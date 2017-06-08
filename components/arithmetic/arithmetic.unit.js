@@ -12,6 +12,12 @@ describe('ArithmeticService', () => {
 
   it('should be injected correctly with Babel', () => {
     expect(arithmetic).toBeTruthy();
-    expect(arithmetic.id).toBe('arithmetic');
+  });
+
+  it('should do some additions', () => {
+    expect(arithmetic.add(1, 1)).toBe(2);
+    expect(arithmetic.add(1.1, 1.1)).toBe(2.2);
+    expect(arithmetic.add(-1, 1)).toBe(0);
+    expect(arithmetic.add(-1.1, 1.1)).toBe(0);
   });
 });

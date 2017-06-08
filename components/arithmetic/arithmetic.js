@@ -6,8 +6,14 @@
  * @constructor
  */
 class ArithmeticService {
-  constructor() {
-    this.id = 'arithmetic';
+  /**
+   * Add n1 with n2
+   * @param {number} n1
+   * @param {number} n2
+   * @returns {number}
+   */
+  static add(n1, n2) {
+    return n1 + n2;
   }
 }
 
@@ -15,4 +21,4 @@ class ArithmeticService {
 // Export
 
 angular.module('arithmetic', [])
-  .service('arithmetic', () => new ArithmeticService());
+  .service('arithmetic', () => ArithmeticService);
