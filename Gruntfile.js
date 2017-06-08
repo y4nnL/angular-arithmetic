@@ -6,7 +6,7 @@ module.exports = function (grunt) {
   // Plugin tasks
 
   /**
-   * Transpile the AngularJS components using Babel
+   * Transpile the AngularJS arithmetic component using Babel
    */
   configuration.babel = {
     options : {
@@ -25,15 +25,27 @@ module.exports = function (grunt) {
    */
   configuration.clean = ['build'];
 
+  /**
+   * Copy the Angular arithmetic component for external use
+   */
+  configuration.copy = {
+    components : {
+      files : {
+        'build/angular-arithmetic.js' : 'components/arithmetic/arithmetic.js'
+      }
+    },
+  };
+
   // -----------------------------------------------------------------------------------------------
   // Registered tasks
 
   /**
-   * Build the AngularJS components
+   * Build the AngularJS arithmetic component for external use
    */
   grunt.registerTask('build', [
     'clean',
-    'babel'
+    'babel',
+    'copy'
   ]);
 
   // -----------------------------------------------------------------------------------------------
@@ -41,6 +53,7 @@ module.exports = function (grunt) {
 
   grunt.loadNpmTasks('grunt-babel');
   grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-contrib-copy');
 
   grunt.initConfig(configuration);
 
