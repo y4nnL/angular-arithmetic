@@ -29,7 +29,7 @@
   },
   "name" : "angular-arithmetic",
   "description" : "Four methods for basic arithmetic operations exposed as AngularJS service",
-  "version" : "1.0.0",
+  "version" : "1.0.1",
   "main" : "index.js",
   "repository" : {
     "type" : "git",
