@@ -11,9 +11,11 @@
     "eslint-plugin-jasmine" : "2.2.0",
     "grunt" : "1.0.1",
     "grunt-babel" : "6.0.0",
+    "grunt-bump": "0.8.0",
     "grunt-contrib-clean" : "1.1.0",
     "grunt-contrib-copy" : "1.0.0",
     "grunt-contrib-watch" : "1.0.0",
+    "grunt-conventional-changelog": "6.1.0",
     "grunt-eslint" : "19.0.0",
     "grunt-karma" : "2.0.0",
     "jasmine-core" : "2.6.3",
@@ -40,6 +42,7 @@
     "operation"
   ],
   "author" : "Yann LOJEWSKI <yann.lojewski@gmail.com> (https://github.com/y4nnL)",
+  "license" : "ISC",
   "licenses" : [
     {
       "type" : "ISC",

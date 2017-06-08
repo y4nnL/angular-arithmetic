@@ -1,6 +1,8 @@
 module.exports = function (grunt) {
 
-  var configuration = {};
+  var configuration = {
+    gitRemote : 'origin'
+  };
 
   // -----------------------------------------------------------------------------------------------
   // Plugin tasks
@@ -21,9 +23,38 @@ module.exports = function (grunt) {
   };
 
   /**
+   * Bump the package.json version property
+   * @see "release-major", "release-minor", "release-patch" registered tasks below
+   */
+  configuration.bump = {
+    options : {
+      commitFiles : [
+        'CHANGELOG.md',
+        'package.json'
+      ],
+      commitMessage : 'chore: release v%VERSION%',
+      pushTo : '<%= gitRemote %>'
+    }
+  };
+
+  /**
    * Clean the build directory
    */
   configuration.clean = ['build'];
+
+  /**
+   * Generate a CHANGELOG.md file based on the Angular commit message conventions
+   */
+  configuration.conventionalChangelog = {
+    options : {
+      changelogOpts : {
+        preset : 'angular'
+      }
+    },
+    release : {
+      src : 'CHANGELOG.md'
+    }
+  };
 
   /**
    * Copy the Angular arithmetic component for external use
@@ -95,6 +126,33 @@ module.exports = function (grunt) {
   ]);
 
   /**
+   * Release a SemVer Major version (X.x.x)
+   */
+  grunt.registerTask('release-major', [
+    'bump-only:major',
+    'conventionalChangelog',
+    'bump-commit'
+  ]);
+
+  /**
+   * Release a SemVer Minor version (x.X.x)
+   */
+  grunt.registerTask('release-minor', [
+    'bump-only:minor',
+    'conventionalChangelog',
+    'bump-commit'
+  ]);
+
+  /**
+   * Release a SemVer Patch version (x.x.X)
+   */
+  grunt.registerTask('release-patch', [
+    'bump-only:patch',
+    'conventionalChangelog',
+    'bump-commit'
+  ]);
+
+  /**
    * Test the AngularJS components
    */
   grunt.registerTask('test', [
@@ -106,9 +164,11 @@ module.exports = function (grunt) {
   // Dependencies
 
   grunt.loadNpmTasks('grunt-babel');
+  grunt.loadNpmTasks('grunt-bump');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-conventional-changelog');
   grunt.loadNpmTasks('grunt-eslint');
   grunt.loadNpmTasks('grunt-karma');
 
