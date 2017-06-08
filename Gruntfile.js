@@ -23,12 +23,15 @@ module.exports = function (grunt) {
   };
 
   /**
-   * Bump the package.json version property
+   * Bump the package.json version property and commit the built artifacts
    * @see "release-major", "release-minor", "release-patch" registered tasks below
    */
   configuration.bump = {
     options : {
       commitFiles : [
+        'build/angular-arithmetic.es5.js',
+        'build/angular-arithmetic.es5.js.map',
+        'build/angular-arithmetic.js',
         'CHANGELOG.md',
         'package.json'
       ],
@@ -129,6 +132,7 @@ module.exports = function (grunt) {
    * Release a SemVer Major version (X.x.x)
    */
   grunt.registerTask('release-major', [
+    'build',
     'bump-only:major',
     'conventionalChangelog',
     'bump-commit'
@@ -138,6 +142,7 @@ module.exports = function (grunt) {
    * Release a SemVer Minor version (x.X.x)
    */
   grunt.registerTask('release-minor', [
+    'build',
     'bump-only:minor',
     'conventionalChangelog',
     'bump-commit'
@@ -147,6 +152,7 @@ module.exports = function (grunt) {
    * Release a SemVer Patch version (x.x.X)
    */
   grunt.registerTask('release-patch', [
+    'build',
     'bump-only:patch',
     'conventionalChangelog',
     'bump-commit'
