@@ -7,6 +7,7 @@ $ npm install angular-arithmetic
 Then add `arithmetic` as a dependency for your application:
 ```javascript
 import arithmetic from 'angular-arithmetic';
+
 angular.module('myApplication', [arithmetic]);
 ```
 Or as a `<script>` tag into your `index.html` file:
