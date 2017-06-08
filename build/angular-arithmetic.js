@@ -6,6 +6,9 @@
  * @constructor
  */
 class ArithmeticService {
+  constructor() {
+    this.name = 'arithmetic';
+  }
 }
 
 // -------------------------------------------------------------------------------------------------

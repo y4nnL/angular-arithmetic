@@ -11,6 +11,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  */
 var ArithmeticService = function ArithmeticService() {
   _classCallCheck(this, ArithmeticService);
+
+  this.name = 'arithmetic';
 };
 
 // -------------------------------------------------------------------------------------------------

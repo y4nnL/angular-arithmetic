@@ -10,6 +10,7 @@
     "jasmine"
   ],
   "globals" : {
-    "angular" : false
+    "angular" : false,
+    "inject" : false
   }
 }

@@ -45,6 +45,42 @@ module.exports = function (grunt) {
     ]
   };
 
+  /**
+   * Run a karma instance to unit test the AngularJS components
+   */
+  configuration.karma = {
+    components : {
+      options : {
+        preprocessors : {
+          'components/**/*.js' : ['babel'],
+        },
+        files : [
+          'node_modules/angular/angular.js',
+          'node_modules/angular-mocks/angular-mocks.js',
+          'components/**/*.js'
+        ],
+        browsers : ['PhantomJS'],
+        frameworks : ['jasmine'],
+        singleRun : true,
+        babelPreprocessor : {
+          options : {
+            presets : ['es2015']
+          }
+        }
+      }
+    }
+  };
+
+  /**
+   * Watch for components changes
+   */
+  configuration.watch = {
+    components : {
+      files : 'components/**/*.js',
+      tasks : 'test'
+    }
+  };
+
   // -----------------------------------------------------------------------------------------------
   // Registered tasks
 
@@ -53,9 +89,17 @@ module.exports = function (grunt) {
    */
   grunt.registerTask('build', [
     'clean',
-    'eslint',
+    'test',
     'babel',
     'copy'
+  ]);
+
+  /**
+   * Test the AngularJS components
+   */
+  grunt.registerTask('test', [
+    'eslint',
+    'karma'
   ]);
 
   // -----------------------------------------------------------------------------------------------
@@ -64,7 +108,9 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-babel');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-copy');
+  grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-eslint');
+  grunt.loadNpmTasks('grunt-karma');
 
   grunt.initConfig(configuration);
 
