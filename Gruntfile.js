@@ -36,6 +36,15 @@ module.exports = function (grunt) {
     },
   };
 
+  /**
+   * Lint the ES6 components
+   */
+  configuration.eslint = {
+    components : [
+      'components/**/*.js'
+    ]
+  };
+
   // -----------------------------------------------------------------------------------------------
   // Registered tasks
 
@@ -44,6 +53,7 @@ module.exports = function (grunt) {
    */
   grunt.registerTask('build', [
     'clean',
+    'eslint',
     'babel',
     'copy'
   ]);
@@ -54,6 +64,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-babel');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-copy');
+  grunt.loadNpmTasks('grunt-eslint');
 
   grunt.initConfig(configuration);
 

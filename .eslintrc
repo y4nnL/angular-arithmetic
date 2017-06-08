@@ -1,0 +1,15 @@
+{
+  "extends" : "airbnb-base",
+  "rules" : {
+    "linebreak-style" : [ "error", "windows" ]
+  },
+  "env" : {
+    "jasmine" : true
+  },
+  "plugins" : [
+    "jasmine"
+  ],
+  "globals" : {
+    "angular" : false
+  }
+}
