@@ -7,7 +7,7 @@
  */
 class ArithmeticService {
   constructor() {
-    this.name = 'arithmetic';
+    this.id = 'arithmetic';
   }
 }
 

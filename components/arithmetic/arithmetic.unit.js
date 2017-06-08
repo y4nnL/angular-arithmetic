@@ -12,6 +12,6 @@ describe('ArithmeticService', () => {
 
   it('should be injected correctly with Babel', () => {
     expect(arithmetic).toBeTruthy();
-    expect(arithmetic.name).toBe('arithmetic');
+    expect(arithmetic.id).toBe('arithmetic');
   });
 });
